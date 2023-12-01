@@ -25,6 +25,10 @@ inp:read_input 1;
 /*** P.1:
 q)sum {"I"$x (first;last)@\:where x in .Q.n}each inp
 
+/or better one by https://github.com/AngusWilson/Advent23/commits?author=AngusWilson using `except:
+q)sum {"I"$(first;last)@\:x except .Q.a}each inp
+
+
 /*** P2:
 /test:
 /
