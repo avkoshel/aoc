@@ -41,7 +41,24 @@ zoneight234
 7pqrstsixteen"
 \
 
-/quick solution:
+/quick solution using ssr[] with extra chars to conver overlaps like "oneight"->18 or "twone"->21:
 dd:flip(("one";"two";"three";"four";"five";"six";"seven";"eight";"nine");("1e";"2o";"3e";"4";"5e";"6";"7n";"8t";"9n"));
 f:{ x{ssr[x;y 0;y 1]}/dd };
 sum {"J"$x (first;last)@\:where x in 1_.Q.n}each {{f x,y}/[x]}each inp 
+
+
+// P2 using ss:
+dd:(("one";"two";"three";"four";"five";"six";"seven";"eight";"nine");("1";"2";"3";"4";"5";"6";"7";"8";"9"));
+sum{
+    x3:(,'/){(1_.Q.n)!ss[x;]each y}[x]each dd;
+    "J"$(first;last)@\:key asc(raze(count each v)#'key x3)!raze v:value x3
+}each inp
+
+//P2: Like that one better:
+// inspired by community commits: uses `ss[] and expanded lookup dictionary (AW), that includes both words and numbers
+q)
+dd:("one";"two";"three";"four";"five";"six";"seven";"eight";"nine"),enlist each 1_.Q.n;
+f:{[dd;x] (first key ::) each (asc;desc)@' (min';max')@\:{(18#1 _.Q.n)!ss[x]each y}[x;dd]}[dd];
+sum "J"$f each inp
+53268
+q)
