@@ -23,14 +23,17 @@ Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green";
 load_input 2;
 inp:read_input 2
 
-/inp: parse input data (TODO: how to do nested `each)
+/ inp: parse input data (TODO: how to do nested `each)
 games:{{(!). flip{reverse(" JS";" ")0:x}each x}each x}each "," vs''";" vs'raze each flip(" *";":") 0: inp;
+/ inp: better one, using modified rak1507 parsing to keep individual draws, just for variety, 
+/     othervise use excellent rak1507 parer instead: https://github.com/rak1507/aoc-2023/blob/main/2.q
+games:{{{(first get each) each group first each (!). flip 0N 2#" "vs 1_x}x}each ";" vs first 1_":" vs x}each inp;
 
 /P1:
-mx:`red`green`blue!12 13 14;
+mx:"rgb"!12 13 14;
 sum 1+where not {any{any 0>mx-x}each x}each games
+/1734
 
  /P2:
 sum prd each {max each(,'/)x}each games
-
-
+/70387
