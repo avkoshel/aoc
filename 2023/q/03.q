@@ -46,7 +46,7 @@ dlocs:dlocs,'{get t @ x}each dlocs[;1];
 eps:raze (-1 1),(-1,1)*\:(count[first inp]+(-1,0,1));
 
 // all syms locattions: (is `_ a sym???):
-sym_locs:where t in except[;.Q.an,"."]key group t;
+sym_locs:where t in except[;.Q.an,"."]distinct t;
 
 //find all the numbers around symbol location:
 f:{
