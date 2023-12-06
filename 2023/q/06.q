@@ -22,10 +22,10 @@ inp:read_input 6;
 
 /*** P1
 t:get each last each":"vs/:inp;
-prd{count where y<r:prd@'(x-i),'i:1+til x}'[t 0;t 1]
+prd{count where y<prd@'(x-i),'i:1+til x}'[t 0;t 1]
 /1413720
 
 /*** P2
 t:"J"$except[;" "]each last each":"vs/:inp;
-prd{count where y<r:prd@'(x-i),'i:1+til x}[t 0;t 1]
+prd{count where y<prd@'(x-i),'i:1+til x}[t 0;t 1]
 /30565288
